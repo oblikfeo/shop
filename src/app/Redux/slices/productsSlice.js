@@ -5,7 +5,7 @@ const productsSlice = createSlice({
   initialState: {
     data: [],
     filteredProducts: [],
-    addItem: []
+    items: []
   },
   reducers: {
     setProducts: (state, action) => {
@@ -26,9 +26,17 @@ const productsSlice = createSlice({
       }
       state.filteredProducts = state.data.filter((item) => item.title.toLowerCase().includes(action.payload))
     },
-    
+    addItems: (state, action) => {
+      const element = state.items.find((item) => item?.id === action.payload)
+      if (element) {
+        state.items = state.items.filter((item) => item?.id !== action.payload)
+      } else {
+        const product = state.data.find((item) => item?.id === action.payload)
+        state.items = [...state.items, product]
+      }
+    }
   },
 });
 
-export const { setProducts, sortProducts, searchProducts } = productsSlice.actions;
+export const { setProducts, sortProducts, searchProducts, addItems } = productsSlice.actions;
 export const productsReducer = productsSlice.reducer;
