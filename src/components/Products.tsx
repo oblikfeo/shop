@@ -3,8 +3,9 @@ import { useSelector } from 'react-redux';
 import { useProducts } from '../app/Redux/axios';
 
 const Products = () => {
+  
   const { data, status } = useProducts();
-  const products = useSelector((state) => state.products.data);
+  const products = useSelector((state) => state.products.filteredProducts);
   console.log(products)
 
   if (status === 'loading') {
@@ -18,7 +19,7 @@ const Products = () => {
   return (
     <div>
       <div className="main">
-        {products.products.map((item) => (
+        {products.map((item) => (
         <div className="card" key={item.id}>
         <img src={item.images[0]} alt="" />
         <div>
