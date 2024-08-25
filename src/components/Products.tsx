@@ -9,11 +9,11 @@ const Products = () => {
   console.log(products)
 
   if (status === 'loading') {
-    return <div>Loading...</div>;
+    return <div className='loading'>Loading...</div>;
   }
 
   if (status === 'error') {
-    return <div>Error fetching products</div>;
+    return <div className='loading'>Error fetching products</div>;
   }
 
   return (

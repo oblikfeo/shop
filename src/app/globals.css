@@ -2,7 +2,6 @@
   margin: 0;
   box-sizing: border-box;
   background-color: #333;
-  color: white;
 }
 
 header {
@@ -13,6 +12,11 @@ header {
   text-shadow: 5px 6px 7px #111;
   height: 3rem;
   border-bottom: 3px solid #222;
+  color: white;
+}
+
+.shopName {
+  color: white;
 }
 
 .card {
@@ -20,6 +24,7 @@ header {
   width: 16rem;
   margin: 2rem;
   text-align: center;
+  color: white;
 }
 
 img {
@@ -61,6 +66,7 @@ img {
 .flex {
   font-size: 1rem;
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
 }
@@ -96,4 +102,49 @@ a {
   margin-top: auto;
   margin-bottom: auto;
   font-size: 1rem;
+}
+
+.basket {
+  height: 2.5rem;
+  width: 2.5rem;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 1rem;
+  padding-right: 0.5rem;
+  cursor: pointer;
+  transition: color 500ms ease;
+}
+
+.basket:hover,
+.basket:active {
+  color: red;
+  outline: none;
+}
+
+.countItem {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: red;
+}
+
+.active {
+  color: red;
+}
+
+.loading {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-size: 10rem;
+  color: white;
+}
+
+.inputSearch {
+  width: 50rem;
+  text-align: center;
+  color: white;
+  padding: 0;
+  font-size: 1.5rem;
+  border-radius: 1rem;
 }
