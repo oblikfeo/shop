@@ -5,7 +5,9 @@ const productsSlice = createSlice({
   initialState: {
     data: [],
     filteredProducts: [],
-    items: []
+    items: [],
+    balanceDollar: 99,
+    balanceCoins: 99
   },
   reducers: {
     setProducts: (state, action) => {
@@ -34,9 +36,42 @@ const productsSlice = createSlice({
         const product = state.data.find((item) => item?.id === action.payload)
         state.items = [...state.items, product]
       }
-    }
+    },
+    delItem: (state, action) => {
+      state.items = state.items.filter(item => item.id !== action.payload);
+    },
+    dollar: (state, action) => {
+      if (action.payload === "plus") {
+        state.balanceDollar += 1
+        state.balanceCoins -= 1
+      }
+      if (action.payload === "minus") {
+        state.balanceCoins += 1
+      state.balanceDollar -= 1
+      }
+    },
+    pay: (state, action) => {
+      const sum = state.items.reduce((acc, val) => acc + Number(val.price), 0)
+      if (action.payload === "dollar") {
+        if (state.balanceDollar > sum) {
+          state.balanceDollar -= sum
+          alert('Покупка совершена успешно!')
+        } else alert('Недостаточно средств')
+      }
+      if (action.payload === 'coins') {
+        if (state.balanceCoins > sum) {
+          state.balanceCoins -= sum
+          alert('Покупка совершена успешно!')
+        } else alert('Недостаточно средств')
+      }
+    },
+    clearBasket: (state, action) => {
+      if (action) {
+        state.items = []
+      }
+    },
   },
 });
 
-export const { setProducts, sortProducts, searchProducts, addItems } = productsSlice.actions;
+export const { setProducts, sortProducts, searchProducts, addItems, delItem, dollar, pay, clearBasket } = productsSlice.actions;
 export const productsReducer = productsSlice.reducer;

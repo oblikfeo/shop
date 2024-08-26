@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useProducts } from '../app/Redux/axios';
 import { addItems } from '@/app/Redux/slices/productsSlice';
@@ -9,7 +8,7 @@ const Products = () => {
   const dispatch = useDispatch()
   
   const { data, status } = useProducts();
-  const products = useSelector((state) => state.products.filteredProducts);
+  const products = useSelector((state: any) => state.products.filteredProducts);
 
   if (status === 'loading') {
     return <div className='loading'>Loading...</div>;
@@ -22,7 +21,7 @@ const Products = () => {
   return (
     <div>
       <div className="main">
-        {products.map((item) => (
+        {products.map((item: { id: number; images: any[]; title: string; price: number; }) => (
         <div className="card" key={item.id}>
         <img src={item.images[0]} alt="" />
         <div>
@@ -32,7 +31,7 @@ const Products = () => {
             <b>{item.price} $ / {item.price} Coins</b>
           </div>
           <button onClick={() => dispatch(addItems(item.id))} className="add" id={item.id}>
-            Добавить в корзину
+            Добавить / Удалить
           </button>
         </div>
       </div>

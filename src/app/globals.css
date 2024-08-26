@@ -160,8 +160,9 @@ a {
   position: fixed;
   right: 2rem;
   top: 5rem;
-  width: 30rem;
-  height: 50rem;
+  width: 25vw;
+  height: 80vh;
+  min-width: 400px;
   background-color: #333;
   border-radius: 2rem;
   box-shadow: 2px 2px 5px 5px black;
@@ -172,7 +173,7 @@ a {
   background-color: #333;
   color: rgb(255, 255, 255);
   font-weight: 700;
-  font-size: 3rem;
+  font-size: 2.5rem;
   text-shadow: none;
   margin-left: auto;
   margin-right: auto;
@@ -181,7 +182,7 @@ a {
 .payBut {
   background-color: #333;
   color: rgb(255, 255, 255);
-  font-size: 3rem;
+  font-size: 2rem;
   border-radius: 2rem;
   padding-left: 2rem;
   padding-right: 2rem;
@@ -192,7 +193,10 @@ a {
 }
 
 .listBuyItems {
-  width: 30rem;
+  max-height: 80vh; 
+  overflow-y: auto;
+  width: 25vw;
+  min-width: 400px;
   height: 35rem;
   background-color: #333;
   margin-top: 1rem;
@@ -215,10 +219,10 @@ a {
 }
 
 .basketItemTitle {
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 .basketItemPrice {
-  font-size: 2rem;
+  font-size: 1.5rem;
   align-items: start;
 }
 
@@ -238,4 +242,107 @@ a {
   display: flex;
   flex-direction: column;
   margin-right: auto;
+}
+
+.modal {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0,0,0,0.7);
+  position: fixed;
+  top: 3rem;
+  left: 0;
+  transform: scale(0);
+}
+
+.modal.active1 {
+  transform: scale(1);
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  position: fixed;
+  font-size: 1.5rem;
+  right: 3rem;
+  top: 2rem;
+  width: 25vw;
+  min-width: 400px;
+  height: 80vh;
+  background-color: #333;
+  border-radius: 2rem;
+  box-shadow: 2px 2px 5px 5px black;
+  padding-top: 1rem;
+}
+
+.balance {
+  margin-bottom: 5rem;
+  padding-bottom: 2px;
+  border-bottom: 2px solid black;
+}
+
+.sumOrder {
+  margin-top: auto;
+  padding-bottom: 2px;
+  border-bottom: 2px solid black;
+
+}
+
+.howPay {
+  margin-bottom: 0.5rem;
+  padding-bottom: 5px;
+  border-bottom: 2px solid black;
+}
+
+.select {
+  font-size: 1.5rem;
+  color: white;
+  border: none;
+  border: 0.5rem solid rgba(255, 255, 255, 0.2);
+  border-radius: 2rem;
+  margin-bottom: 4rem;
+}
+
+.change {
+  padding-bottom: 2px;
+  border-bottom: 2px solid black;
+}
+
+.btn {
+  font-size: 1rem;
+  color: white;
+  margin-top: 2rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 0.5rem solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.btn:active {
+  background-color: green;
+}
+
+.centerTitle {
+  text-align: center;
+}
+
+.finish {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: white;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.imgBuy {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.option {
+  text-align: center;
 }

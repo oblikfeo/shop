@@ -34,7 +34,7 @@ const Header = () => {
             <FaBasketShopping onClick={() => setBasket(!basket)} className={`basketIcon ${basket && 'active'}`}/>
         </div>
         {basket && (
-          <Basket />
+          <Basket setBasket={setBasket} />
         )}
       </header>
     );

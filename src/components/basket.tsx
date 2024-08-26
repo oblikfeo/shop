@@ -1,31 +1,40 @@
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { addItems } from '@/app/Redux/slices/productsSlice';
+import { AwaitedReactNode, JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, useState } from 'react';
+import Modal from './Modal';
 
-const Basket = () => {
+const Basket = ({setBasket}) => {
 
-  const render = useSelector(state => state.products.items)
-  console.log(render)
+  const dispatch = useDispatch()
+  const [modalActive, setModalActive] = useState(false)
+
+  const render = useSelector((state: any) => state.products.items)
 
     return (
-      <div className="basket">
+      <>
+        <div className="basket">
         <span className='basketTitle'>Корзина</span>
         <div className="listBuyItems">
-            {render.map(item => (
-              <div className="buyItem">
+            {render.map((item: { id: number; images: any[]; title: string; price: number; }) => (
+              <div className="buyItem" key={item.id}>
                 <img className='basketItemImg' src={item.images[0]} alt="" />
                 <div className='flexName'>
-                  <span className='basketItemTitle'>{item.title}</span>
+                  <span className='basketItemTitle'>{item.title.slice(0, 30)}</span>
                   <span className='basketItemPrice'>{item.price} $</span>
                 </div>
                 <div className='rightBut'>
-                <button className='delBut'>удалить</button>
+                <button onClick={() => dispatch(addItems(item.id))} className='delBut'>удалить</button>
                 </div>
               </div>
             )
-              
             )}
         </div>
-        <button className='payBut'>оплатить</button>
+        <button onClick={() => setModalActive(true)} className='payBut'>оплатить</button>
       </div>
+      <Modal active={modalActive} setActive={setModalActive}  setBasket={setBasket}/>
+      </>
+            
     );
   };
   
