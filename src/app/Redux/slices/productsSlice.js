@@ -55,13 +55,13 @@ const productsSlice = createSlice({
       if (action.payload === "dollar") {
         if (state.balanceDollar > sum) {
           state.balanceDollar -= sum
-          alert('Покупка совершена успешно!')
+          alert(`Покупка совершена успешно! Ваш баланс ${state.balanceDollar.toFixed(2)} $`)
         } else alert('Недостаточно средств')
       }
       if (action.payload === 'coins') {
         if (state.balanceCoins > sum) {
           state.balanceCoins -= sum
-          alert('Покупка совершена успешно!')
+          alert(`Покупка совершена успешно! Ваш баланс ${state.balanceCoins.toFixed(2)} Coins`)
         } else alert('Недостаточно средств')
       }
     },
